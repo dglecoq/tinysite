@@ -1,0 +1,46 @@
+<html>
+
+<script language="javascript">
+  function calculate()
+  {
+    var a = parseFloat(document.getElementById("a").value);
+	var b = parseFloat(document.getElementById("b").value);
+
+	var start = parseFloat(0);
+	var end = parseFloat(3.141592654)/2;
+	var step = parseFloat(0.00000001);
+	var result = parseFloat(0);
+	var i = parseFloat(0)
+
+	for( i=start; i <= end ; i+=step)
+		result += step * Math.sqrt( a*a*Math.sin(i)*Math.sin(i) + b*b*Math.cos(i)*Math.cos(i));
+
+	result = 4 * result;
+	
+	var approx = parseFloat(2) * 3.141592654 * Math.sqrt((a*a + b*b)/2);
+	
+	document.getElementById("result").innerHTML = "Résultat avec calcul intégral : "
+	document.getElementById("result").innerHTML += result;
+	document.getElementById("result").innerHTML += "<br>Résultat avec calcul approximatif : "
+    document.getElementById("result").innerHTML += approx;
+
+  }
+</script>
+
+<body>
+	Exemple très simple de calcul itératif (infinitésimal, intégral...)<br>
+	Périmètre de l'ellipse
+	<form name="f1">
+		a <input type="text" id="a"></input><br>
+		b <input type="text" id="b"></input><br>
+		<input type="button" value="Calculer" onclick="javascript:calculate()"/>
+	</form>
+	<u>Résultats</u>
+	<p id="result">
+	</p>
+</body>
+
+<i>More ...<br>
+https://stackoverflow.com/questions/27177661/save-html-locally-with-javascript
+</i>
+</html>
